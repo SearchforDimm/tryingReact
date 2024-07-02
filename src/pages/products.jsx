@@ -25,6 +25,13 @@ const products = [
     image: "/images/shoes-1.jpg",
     description: "Latest product from Puma",
   },
+  {
+    id: 4,
+    name: "Ortus Eight",
+    price: 199,
+    image: "/images/shoes-1.jpg",
+    description: "Latest product from Puma",
+  },
 ];
 
 const email = localStorage.getItem("email");
