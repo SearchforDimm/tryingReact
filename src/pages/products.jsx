@@ -30,7 +30,14 @@ const products = [
     name: "Ortus Eight",
     price: 199,
     image: "/images/shoes-1.jpg",
-    description: "Latest product from Puma",
+    description: "Latest product from Ortus Eight",
+  },
+  {
+    id: 5,
+    name: "Gretsch",
+    price: 900,
+    image: "/images/shoes-1.jpg",
+    description: "Latest product from Gretsch",
   },
 ];
 
