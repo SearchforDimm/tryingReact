@@ -10,7 +10,7 @@ class Counter extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ count: 1 });
+    this.setState({ count: 10 });
     console.log("mount");
   }
 
