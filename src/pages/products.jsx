@@ -2,9 +2,9 @@ import Button from "../components/Elements/Button";
 import CardProducts from "../components/Fragments/CardProducts";
 import { useEffect, useRef, useState } from "react";
 import { getProducts } from "../services/product.service";
-import { getUsername } from "../services/auth.service";
+import { getUsername, login } from "../services/auth.service";
 
-const productsPage = () => {
+const ProductsPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
@@ -71,6 +71,7 @@ const productsPage = () => {
       totalPriceRef.current.style.display = "none";
     }
   }, [cart, products]);
+
   return (
     <>
       <div className="flex h-20 justify-between bg-blue-600 text-white items-center px-20 py-10">
@@ -157,4 +158,4 @@ const productsPage = () => {
   );
 };
 
-export default productsPage;
+export default ProductsPage;
