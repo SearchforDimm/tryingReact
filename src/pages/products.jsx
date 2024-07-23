@@ -2,25 +2,18 @@ import Button from "../components/Elements/Button";
 import CardProducts from "../components/Fragments/CardProducts";
 import { useEffect, useRef, useState } from "react";
 import { getProducts } from "../services/product.service";
-import { getUsername, login } from "../services/auth.service";
+import { useLogin } from "../hooks/useLogin";
 
 const ProductsPage = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
-  const [username, setUsername] = useState("");
+  const username = useLogin();
 
   useEffect(() => {
     getProducts((data) => {
       setProducts(data);
     });
-  }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setUsername(getUsername(token)); // Call getUsername with token
-    }
   }, []);
 
   useEffect(() => {
@@ -38,6 +31,7 @@ const ProductsPage = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");
     localStorage.removeItem("cart");
+    localStorage.removeItem("token");
     window.location.href = "/login";
   };
 
@@ -77,8 +71,12 @@ const ProductsPage = () => {
       <div className="flex h-20 justify-between bg-blue-600 text-white items-center px-20 py-10">
         <h1 className="font-bold text-3xl">Shoes Store</h1>
         <div className="flex items-center">
-          {username}
-          <Button classname="ml-5 bg-black" onClick={handleLogout}>
+          <a href="/profile" className="hover:underline">
+            <div className="profile bg-black p-2 rounded hover:cursor-pointer hover:underline">
+              {username}
+            </div>
+          </a>
+          <Button classname="ml-5 bg-red-600" onClick={handleLogout}>
             Logout
           </Button>
         </div>
